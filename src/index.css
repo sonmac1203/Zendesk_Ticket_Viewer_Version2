@@ -39,3 +39,8 @@ body {
 .badge.bg-warning {
   background-color: #c38f00 !important;
 }
+
+.modal-title {
+  color: #03363d;
+  font-size: 2rem;
+}
