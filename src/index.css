@@ -1,10 +1,11 @@
 body {
-  background-color: #17494d;
+  background-color: #bdd9d7;
 }
 
 .card {
-  background-color: #f8f9f9;
+  background-color: #f3f0ee;
   color: #03363d;
+  border: 2px solid #17494d;
 }
 
 .card-subtitle {
@@ -13,9 +14,9 @@ body {
 }
 
 .btn.btn-info {
-  background-color: #ece0ce;
+  color: #ece0ce;
   border-color: #ece0ce;
-  color: #03363d;
+  background-color: #17494d;
 }
 
 .badge {
@@ -40,12 +41,53 @@ body {
   background-color: #c38f00 !important;
 }
 
+.modal-content {
+  background-color: #f3f0ee;
+}
+
+.modal-header {
+  border-bottom: 2px solid #dee2e6;
+}
+
 .modal-title {
   color: #03363d;
   font-size: 2rem;
 }
 
 .page-link {
-  background-color: #f8f9f9;
+  background-color: #f3f0ee;
   color: #03363d;
+  border: 2px solid #17494d;
+}
+
+.page-link:hover {
+  z-index: 2;
+  color: #f3f0ee;
+  background-color: #03363d;
+  border-color: #03363d;
+}
+
+.page-link:focus {
+  background-color: #f3f0ee;
+  color: #03363d;
+  box-shadow: none;
+}
+
+.welcome {
+  background-color: #17494d;
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.welcome-sentence {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #ece0ce;
+}
+
+.intro-para {
+  color: #ece0ce;
+  font-size: medium;
+  /* font-weight: bold; */
 }

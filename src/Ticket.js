@@ -19,6 +19,7 @@ const Ticket = ({
     id,
     subject,
     created_at,
+    updated_at,
     type,
     priority,
     status,
@@ -26,6 +27,7 @@ const Ticket = ({
     requester_id,
     submitter_id,
     assignee_id,
+    tags,
   },
 }) => {
   const [open, setOpen] = useState(false);
@@ -36,7 +38,6 @@ const Ticket = ({
 
   const capitalize = (string) =>
     string.charAt(0).toUpperCase() + string.slice(1);
-
   return (
     <Fragment>
       <Col md="6" lg="4" className="mb-4">
@@ -58,11 +59,11 @@ const Ticket = ({
               </Badge>
             </div>
             <CardText className="mt-3 mb-3">
-              {shortenString(description, 145)}
+              {shortenString(description, 130)}
             </CardText>
             <div className="d-flex justify-content-end">
               <Button color="info" onClick={() => setOpen(true)}>
-                View details
+                Details
               </Button>
             </div>
           </CardBody>
@@ -79,9 +80,31 @@ const Ticket = ({
         </ModalHeader>
         <ModalBody>
           <p>
-            <strong>Date: </strong>
+            <strong>Date created: </strong>
             {Moment(created_at).format("LLL")}
           </p>
+          <p>
+            <strong>Date updated: </strong>
+            {Moment(updated_at).format("LLL")}
+          </p>
+          {type && (
+            <p>
+              <strong>Type: </strong>
+              {type}
+            </p>
+          )}
+          {priority && (
+            <p>
+              <strong>Priority: </strong>
+              {priority}
+            </p>
+          )}
+          {status && (
+            <p>
+              <strong>Status: </strong>
+              {status}
+            </p>
+          )}
           <p>
             <strong>Description: </strong>
             {description}
@@ -97,6 +120,10 @@ const Ticket = ({
           <p>
             <strong>Assignee Id: </strong>
             {assignee_id}
+          </p>
+          <p>
+            <strong>Tags: </strong>
+            {tags.join(", ")}
           </p>
         </ModalBody>
       </Modal>
