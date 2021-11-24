@@ -2,13 +2,21 @@ import React, { useState, useEffect } from "react";
 import Ticket from "./Ticket";
 import { Row, Container } from "reactstrap";
 import Pagination from "./Pagination";
+import Error from "./Error";
+import Welcome from "./Banner";
 
 function Tickets() {
   const [tickets, setTickets] = useState([]);
   const [page, setPage] = useState(1);
   const [numPage, setNumPage] = useState(1);
   const [error, setError] = useState(false);
-  const [totalTickets, setTotalTickets] = useState([]);
+  const [totalTickets, setTotalTickets] = useState();
+  const [reload, setReload] = useState(false);
+  const reset = () => {
+    setReload(true);
+    setError(false);
+    setPage(1);
+  };
 
   useEffect(() => {
     fetch(
@@ -25,32 +33,26 @@ function Tickets() {
         setTickets(data.tickets);
         setTotalTickets(data.count);
         setNumPage(Math.ceil(data.count / 25));
+        setReload(false);
       })
       .catch(() => setError(true));
-  }, [page]);
+  }, [page, reload]);
 
-  return error ? (
-    <h1>HAHA</h1>
-  ) : (
+  return (
     <div>
-      <div className="mb-5" class="welcome">
-        <h1 class="welcome-sentence">Welcome to Zendesk Ticket Viewer</h1>
-        <p class="intro-para">
-          There are {totalTickets} tickets to display, and each page is showing
-          25 tickets.
-          <br />
-          Click the 'Details' button to see more details about the displayed
-          ticket.
-        </p>
-      </div>
-      <Container className="my-4">
-        <Pagination page={page} numPage={numPage} setPage={setPage} />
-        <Row>
-          {tickets &&
-            tickets.length > 0 &&
-            tickets.map((ticket) => <Ticket ticket={ticket} />)}
-        </Row>
-      </Container>
+      <Welcome totalTickets={totalTickets} />
+      {error ? (
+        <Error reset={reset} />
+      ) : (
+        <Container className="my-4">
+          <Pagination page={page} numPage={numPage} setPage={setPage} />
+          <Row>
+            {tickets &&
+              tickets.length > 0 &&
+              tickets.map((ticket, k) => <Ticket ticket={ticket} key={k} />)}
+          </Row>
+        </Container>
+      )}
     </div>
   );
 }

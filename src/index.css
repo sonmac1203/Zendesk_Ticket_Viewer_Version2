@@ -89,5 +89,59 @@ body {
 .intro-para {
   color: #ece0ce;
   font-size: medium;
-  /* font-weight: bold; */
+}
+
+.error-para {
+  color: #ece0ce;
+  font-size: large;
+}
+
+.spinner-border {
+  width: 150px;
+  height: 150px;
+  animation: 0.75s linear infinite spinner-border;
+}
+
+.number5 {
+  font-size: 300px;
+  line-height: 0.8;
+  color: #af2c2c;
+}
+
+.firstCircle {
+  border: 16px solid #bf5000;
+  border-right-color: transparent;
+}
+
+.secondCircle {
+  border: 16px solid #c38f00;
+  border-right-color: transparent;
+}
+
+.error500 {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error500 p {
+  font-size: 30px;
+  color: #17494d;
+  font-weight: bold;
+}
+
+.error500 .btn {
+  font-weight: bold;
+  color: #f3f0ee;
+  background-color: #17494d;
+}
+
+.error500 .btn:hover {
+  background-color: #03363d;
+}
+
+.error500 .btn:focus {
+  box-shadow: none;
 }
