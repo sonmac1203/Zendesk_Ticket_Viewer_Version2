@@ -19,7 +19,7 @@ const Paging = ({ page, numPage, setPage }) => {
       </PaginationItem>
       <PaginationItem>
         <PaginationLink className="px-4">
-          {page} / {numPage}
+          {page} / {Math.max(numPage, 1)}
         </PaginationLink>
       </PaginationItem>
       <PaginationItem>
@@ -31,7 +31,10 @@ const Paging = ({ page, numPage, setPage }) => {
         </PaginationLink>
       </PaginationItem>
       <PaginationItem>
-        <PaginationLink className="px-3" onClick={() => setPage(numPage)}>
+        <PaginationLink
+          className="px-3"
+          onClick={() => setPage(Math.max(numPage, 1))}
+        >
           Last
         </PaginationLink>
       </PaginationItem>

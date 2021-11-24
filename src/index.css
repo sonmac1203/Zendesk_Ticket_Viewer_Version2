@@ -96,7 +96,7 @@ body {
   font-size: large;
 }
 
-.spinner-border {
+.error500 .spinner-border {
   width: 150px;
   height: 150px;
   animation: 0.75s linear infinite spinner-border;
@@ -144,4 +144,8 @@ body {
 
 .error500 .btn:focus {
   box-shadow: none;
+}
+
+.customloading .spinner-grow {
+  background-color: #17494d;
 }

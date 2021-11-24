@@ -4,6 +4,7 @@ import { Row, Container } from "reactstrap";
 import Pagination from "./Pagination";
 import Error from "./Error";
 import Welcome from "./Banner";
+import Loading from "./Loading";
 
 function Tickets() {
   const [tickets, setTickets] = useState([]);
@@ -12,6 +13,7 @@ function Tickets() {
   const [error, setError] = useState(false);
   const [totalTickets, setTotalTickets] = useState();
   const [reload, setReload] = useState(false);
+  const [loading, setLoading] = useState(false);
   const reset = () => {
     setReload(true);
     setError(false);
@@ -19,12 +21,12 @@ function Tickets() {
   };
 
   useEffect(() => {
+    setLoading(true);
     fetch(
-      `https://zccsontmac.zendesk.com/api/v2/tickets?page=${page}&per_page=25`,
+      `https://${process.env.REACT_APP_SUBDOMAIN}.zendesk.com/api/v2/tickets?page=${page}&per_page=25`,
       {
         headers: {
-          Authorization:
-            "Bearer d67acff1d1185cdfef514e908686b02cba3e988d1fce0df4a2ade742c3002443",
+          Authorization: `Bearer ${process.env.REACT_APP_OAUTH_TOKEN}`,
         },
       }
     )
@@ -34,14 +36,17 @@ function Tickets() {
         setTotalTickets(data.count);
         setNumPage(Math.ceil(data.count / 25));
         setReload(false);
+        setLoading(false);
       })
       .catch(() => setError(true));
   }, [page, reload]);
 
   return (
     <div>
-      <Welcome totalTickets={totalTickets} />
-      {error ? (
+      <Welcome totalTickets={totalTickets} loading={loading} />
+      {loading ? (
+        <Loading />
+      ) : error ? (
         <Error reset={reset} />
       ) : (
         <Container className="my-4">

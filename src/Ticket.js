@@ -44,7 +44,7 @@ const Ticket = ({
         <Card>
           <CardBody>
             <CardTitle tag="h5" className="mb-0">
-              {id}. {capitalize(shortenString(subject, 35))}
+              {id}. {capitalize(shortenString(subject, 30))}
             </CardTitle>
             <CardSubtitle className="mb-2 text-muted mt-1" tag="h6">
               Created at {Moment(created_at).format("LLL")}

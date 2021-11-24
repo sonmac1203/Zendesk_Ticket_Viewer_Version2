@@ -9,7 +9,10 @@
         "est",
         "nisi",
         "incididunt"
-      ]
+      ],
+      "type": "problem",
+      "priority": "urgent",
+      "status": "open"
     },
     {
       "requester_id": 2,
@@ -20,7 +23,10 @@
         "labore",
         "voluptate",
         "amet"
-      ]
+      ],
+      "type": "incident",
+      "priority": "high",
+      "status": "closed"
     },
     {
       "requester_id": 3,
@@ -31,7 +37,10 @@
         "laborum",
         "mollit",
         "proident"
-      ]
+      ],
+      "type": "question",
+      "priority": "normal",
+      "status": "hold"
     },
     {
       "requester_id": 4,
@@ -42,7 +51,10 @@
         "consectetur",
         "mollit",
         "sit"
-      ]
+      ],
+      "type": "task",
+      "priority": "low",
+      "status": "solved"
     },
     {
       "requester_id": 5,
@@ -53,7 +65,10 @@
         "et",
         "occaecat",
         "cillum"
-      ]
+      ],
+      "type": "question",
+      "priority": "high",
+      "status": "pending"
     },
     {
       "requester_id": 6,
