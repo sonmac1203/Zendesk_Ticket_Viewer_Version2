@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Ticket from "./Ticket";
 import { Row, Container } from "reactstrap";
 import Pagination from "./Pagination";
@@ -7,20 +7,20 @@ import Welcome from "./Banner";
 import Loading from "./Loading";
 
 function Tickets() {
-  const [tickets, setTickets] = useState([]);
-  const [page, setPage] = useState(1);
-  const [numPage, setNumPage] = useState(1);
-  const [error, setError] = useState(false);
-  const [totalTickets, setTotalTickets] = useState();
-  const [reload, setReload] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [tickets, setTickets] = React.useState([]);
+  const [page, setPage] = React.useState(1);
+  const [numPage, setNumPage] = React.useState(1);
+  const [error, setError] = React.useState(false);
+  const [totalTickets, setTotalTickets] = React.useState();
+  const [reload, setReload] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
   const reset = () => {
     setReload(true);
     setError(false);
     setPage(1);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     setLoading(true);
     fetch(
       `https://${process.env.REACT_APP_SUBDOMAIN}.zendesk.com/api/v2/tickets?page=${page}&per_page=25`,
@@ -42,7 +42,7 @@ function Tickets() {
   }, [page, reload]);
 
   return (
-    <div>
+    <div data-testid="tickets-display">
       <Welcome totalTickets={totalTickets} loading={loading} />
       {loading ? (
         <Loading />
