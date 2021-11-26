@@ -1,6 +1,7 @@
 import React from "react";
-import { render, screen, prettyDOM, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Tickets from "../Tickets";
+import Moment from "moment";
 
 const firstTicket = {
   url: "https://zccsontmac.zendesk.com/api/v2/tickets/203.json",
@@ -51,7 +52,10 @@ const firstTicket = {
 
 const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
-describe("Ticket components", () => {
+const shortenString = (s, len) =>
+  s.length > len ? s.substring(0, len) + "..." : s;
+
+describe("Ticket components with 1 ticket", () => {
   React.useState = jest
     .fn()
     .mockReturnValueOnce([[firstTicket], {}])
@@ -68,35 +72,95 @@ describe("Ticket components", () => {
   test("Should have only one card", () => {
     expect(wrapper.getElementsByClassName("card").length).toBe(1);
   });
-  //console.log(wrapper.getElementsByClassName("card-title")[0]);
-  // test("Should have only one", () => {
-  //   expect(wrapper.querySelectorAll(".card-title")).toBe(1);
-  // });
+
+  test("Should contain the correct id and subject", () => {
+    expect(wrapper.querySelector(".card-title")).toHaveTextContent(
+      firstTicket.id + ". " + capitalize(shortenString(firstTicket.subject, 30))
+    );
+  });
+
+  test("Should contain the correct date", () => {
+    expect(wrapper.querySelector(".card-subtitle")).toHaveTextContent(
+      "Created at " + Moment(firstTicket.created_at).format("LLL")
+    );
+  });
+
+  test("Should have three badges", () => {
+    expect(wrapper.querySelectorAll(".badge").length).toBe(3);
+  });
+
+  test("First badge should be Type", () => {
+    expect(wrapper.querySelectorAll(".badge")[0]).toHaveTextContent(
+      capitalize(firstTicket.type)
+    );
+  });
+
+  test("Second badge should be Priority", () => {
+    expect(wrapper.querySelectorAll(".badge")[1]).toHaveTextContent(
+      capitalize(firstTicket.priority)
+    );
+  });
+
+  test("Third badge should be Status", () => {
+    expect(wrapper.querySelectorAll(".badge")[2]).toHaveTextContent(
+      capitalize(firstTicket.status)
+    );
+  });
+
+  test("Should have a 'Details' button", () => {
+    expect(wrapper.querySelector("button.btn")).toHaveTextContent("Details");
+  });
 
   unmount();
 });
 
-describe("Ticket components", () => {
+describe("Ticket components with 2 tickets", () => {
   React.useState = jest
     .fn()
     .mockReturnValueOnce([[firstTicket, firstTicket], {}])
     .mockReturnValueOnce([1, {}])
     .mockReturnValueOnce([1, {}])
     .mockReturnValueOnce([false, {}])
-    .mockReturnValueOnce([1, {}])
+    .mockReturnValueOnce([2, {}])
     .mockReturnValueOnce([false, {}])
     .mockReturnValueOnce([false, {}]);
   React.useEffect = jest.fn();
-  render(<Tickets />);
+  const { unmount } = render(<Tickets />);
   const wrapper = screen.getByTestId("tickets-display");
-
-  //console.log(prettyDOM(wrapper));
-
-  // test("Should show welcome statement", () => {
-  //   expect(wrapper).toHaveTextContent(capitalize(firstTicket.subject));
-  // });
 
   test("Should have two cards", () => {
     expect(wrapper.getElementsByClassName("card").length).toBe(2);
   });
+
+  test("Should have two card-title classes", () => {
+    expect(wrapper.getElementsByClassName("card-title").length).toBe(2);
+  });
+
+  unmount();
+});
+
+describe("Ticket components with 25 tickets", () => {
+  const tickets = [];
+  for (let i = 0; i < 25; i++) {
+    tickets.push(firstTicket);
+  }
+
+  React.useState = jest
+    .fn()
+    .mockReturnValueOnce([tickets, {}])
+    .mockReturnValueOnce([1, {}])
+    .mockReturnValueOnce([1, {}])
+    .mockReturnValueOnce([false, {}])
+    .mockReturnValueOnce([25, {}])
+    .mockReturnValueOnce([false, {}])
+    .mockReturnValueOnce([false, {}]);
+  React.useEffect = jest.fn();
+  const { unmount } = render(<Tickets />);
+  const wrapper = screen.getByTestId("tickets-display");
+
+  test("Should have two cards", () => {
+    expect(wrapper.getElementsByClassName("card").length).toBe(25);
+  });
+
+  unmount();
 });
