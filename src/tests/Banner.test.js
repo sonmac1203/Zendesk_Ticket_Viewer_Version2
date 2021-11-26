@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Banner from "../Banner";
+import Banner from "../components/Banner";
 
 describe("<Banner />", () => {
   describe("Banner displaying when total ticket is undefined", () => {

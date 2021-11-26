@@ -1,7 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Tickets from "../Tickets";
+import Tickets from "../components/Tickets";
 import Moment from "moment";
+import { shortenString, capitalize } from "../utils/utils";
 
 const firstTicket = {
   url: "https://zccsontmac.zendesk.com/api/v2/tickets/203.json",
@@ -49,11 +50,6 @@ const firstTicket = {
   allow_channelback: false,
   allow_attachments: true,
 };
-
-const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
-
-const shortenString = (s, len) =>
-  s.length > len ? s.substring(0, len) + "..." : s;
 
 describe("<Tickets />", () => {
   describe("Ticket components with 1 ticket", () => {

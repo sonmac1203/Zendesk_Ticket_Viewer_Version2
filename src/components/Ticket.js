@@ -13,6 +13,7 @@ import {
   ModalBody,
 } from "reactstrap";
 import Moment from "moment";
+import { shortenString, capitalize } from "../utils/utils";
 
 const Ticket = ({
   ticket: {
@@ -33,11 +34,6 @@ const Ticket = ({
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen(!open);
 
-  const shortenString = (s, len) =>
-    s.length > len ? s.substring(0, len) + "..." : s;
-
-  const capitalize = (string) =>
-    string.charAt(0).toUpperCase() + string.slice(1);
   return (
     <Fragment>
       <Col md="6" lg="4" className="mb-4">

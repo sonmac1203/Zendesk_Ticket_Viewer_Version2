@@ -1,6 +1,6 @@
 import React from "react";
-import { prettyDOM, render, screen } from "@testing-library/react";
-import Error from "../Error";
+import { render, screen } from "@testing-library/react";
+import Error from "../components/Error";
 
 describe("<Error />", () => {
   render(<Error />);
