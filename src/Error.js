@@ -3,7 +3,7 @@ import { Button, Spinner } from "reactstrap";
 
 const Error = ({ reset }) => {
   return (
-    <div className="error500">
+    <div className="error500" data-testid="error-page">
       <div className="mb-5">
         <span className="number5">5</span>
         <Spinner className="firstCircle me-3 ms-1" />
