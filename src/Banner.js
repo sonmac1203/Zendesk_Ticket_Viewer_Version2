@@ -2,7 +2,7 @@ import React from "react";
 
 const Banner = ({ totalTickets, loading }) => {
   return (
-    <div className="mb-5 welcome">
+    <div className="mb-5 welcome" data-testid="welcome-banner">
       <h1 className="welcome-sentence">Welcome to Zendesk Ticket Viewer</h1>
       {!loading &&
         (totalTickets ? (
