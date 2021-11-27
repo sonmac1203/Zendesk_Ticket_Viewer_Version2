@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# Zendesk Coding Challenge 2021
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a browser-based Ticket Viewer that is built for the Coding Challenge proposed by Zendesk in November 2021.
+The project is deployed on Netlify at [here](https://sonmac-ticketsviewer.netlify.app/) (tickets might not be shown due to expired token).
 
-## Available Scripts
+This Ticket Viewer will:
 
-In the project directory, you can run:
+- Connect to the Zendesk API
+- Request all the tickets for your account
+- Display them in a responsive grid
+- Display individual ticket's details in a pop-up window
+- Page through tickets when more than 25 tickets are returned
 
-### `npm start`
+## About
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Author: Son Tran Thien Mac
+- Technologies: React, HTML, CSS, JavaScript, Bootstrap, Reactstrap, Postman, Jest, React Testing Library, Git, Netlify
+- Date: 11/21/21 to 11/27/21
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation
 
-### `npm test`
+### Requirements and Recommendations
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Must have [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed
 
-### `npm run build`
+- This program is able to handle an interruption of Internet connection, but the user ought to maintain a stable connection for the best experience
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Procedure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1.  Clone this Github repository
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+        git clone https://github.com/sonmac1203/Zendesk_Ticket_Viewer_Version2.git
 
-### `npm run eject`
+2.  Redirect to the root directory of this repository
+  
+        cd Zendesk_Ticket_Viewer_Version2
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3.  Install dependencies
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+        npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+4. Create .env file
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+        touch .env
 
-## Learn More
+5. Add entries for authentication factors in .env file (retrieve values from submission)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+        REACT_APP_OAUTH_TOKEN=...
+        REACT_APP_SUBDOMAIN=...
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+6.  Run the program
 
-### Code Splitting
+        npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Testing
 
-### Analyzing the Bundle Size
+- Run the tests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+        npm run test
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Interface
 
-### Advanced Configuration
+![Main display](/images/main_display.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![Pop-up ticket details](/images/pop-up_details.png)
 
-### Deployment
+![Loading dots](/images/loading_dots.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![Error page](/images/error_display.png)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
