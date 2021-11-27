@@ -41,5 +41,10 @@
   "devDependencies": {
     "@testing-library/react": "^11.2.7",
     "jest": "^26.6.0"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "src/index.js"
+    ]
   }
 }

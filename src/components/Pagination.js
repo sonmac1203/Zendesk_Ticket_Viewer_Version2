@@ -3,7 +3,10 @@ import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
 
 const Paging = ({ page, numPage, setPage }) => {
   return (
-    <Pagination className="mb-3 d-flex justify-content-center">
+    <Pagination
+      className="mb-3 d-flex justify-content-center"
+      data-testid="paging-bar"
+    >
       <PaginationItem>
         <PaginationLink
           className="px-3"
@@ -23,7 +26,7 @@ const Paging = ({ page, numPage, setPage }) => {
         </PaginationLink>
       </PaginationItem>
       <PaginationItem>
-        <PaginationLink className="px-4">
+        <PaginationLink className="px-4" disabled>
           {page} / {Math.max(numPage, 1)}
         </PaginationLink>
       </PaginationItem>

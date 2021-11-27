@@ -1,7 +1,11 @@
 import Tickets from "./Tickets";
 
 function App() {
-  return <Tickets />;
+  return (
+    <div data-testid="app-test">
+      <Tickets />;
+    </div>
+  );
 }
 
 export default App;
