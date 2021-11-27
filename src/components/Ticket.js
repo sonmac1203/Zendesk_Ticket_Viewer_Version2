@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import {
   Button,
   Card,
@@ -35,36 +35,32 @@ const Ticket = ({
   const toggle = () => setOpen(!open);
 
   return (
-    <Fragment>
-      <Col md="6" lg="4" className="mb-4">
-        <Card>
-          <CardBody>
-            <CardTitle tag="h5" className="mb-0">
-              {id}. {capitalize(shortenString(subject, 30))}
-            </CardTitle>
-            <CardSubtitle className="mb-2 text-muted mt-1" tag="h6">
-              Created at {Moment(created_at).format("LLL")}
-            </CardSubtitle>
-            <div className="my-2">
-              <Badge color="danger">{type ? capitalize(type) : "Task"}</Badge>
-              <Badge className="mx-2" color="primary">
-                {priority ? capitalize(priority) : "Normal"}
-              </Badge>
-              <Badge color="warning">
-                {status ? capitalize(status) : "New"}
-              </Badge>
-            </div>
-            <CardText className="mt-3 mb-3">
-              {shortenString(description, 130)}
-            </CardText>
-            <div className="d-flex justify-content-end">
-              <Button color="info" onClick={() => setOpen(true)}>
-                Details
-              </Button>
-            </div>
-          </CardBody>
-        </Card>
-      </Col>
+    <Col md="6" lg="4" className="mb-4">
+      <Card>
+        <CardBody>
+          <CardTitle tag="h5" className="mb-0">
+            {id}. {capitalize(shortenString(subject, 30))}
+          </CardTitle>
+          <CardSubtitle className="mb-2 text-muted mt-1" tag="h6">
+            Created at {Moment(created_at).format("LLL")}
+          </CardSubtitle>
+          <div className="my-2">
+            <Badge color="danger">{type ? capitalize(type) : "Task"}</Badge>
+            <Badge className="mx-2" color="primary">
+              {priority ? capitalize(priority) : "Normal"}
+            </Badge>
+            <Badge color="warning">{status ? capitalize(status) : "New"}</Badge>
+          </div>
+          <CardText className="mt-3 mb-3">
+            {shortenString(description, 130)}
+          </CardText>
+          <div className="d-flex justify-content-end">
+            <Button color="info" onClick={() => setOpen(true)}>
+              Details
+            </Button>
+          </div>
+        </CardBody>
+      </Card>
       <Modal centered size="lg" toggle={toggle} isOpen={open}>
         <ModalHeader
           close={
@@ -123,7 +119,7 @@ const Ticket = ({
           </p>
         </ModalBody>
       </Modal>
-    </Fragment>
+    </Col>
   );
 };
 
