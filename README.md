@@ -1,6 +1,7 @@
 # Zendesk Coding Challenge 2021
 
 This is a browser-based Ticket Viewer that is built for the Coding Challenge proposed by Zendesk in November 2021.
+Color styling was inspired by [Zendesk's color palette](https://brandland.zendesk.com/color#zendesk-colors). 
 The project is deployed on Netlify at [here](https://sonmac-ticketsviewer.netlify.app/) (tickets might not be shown due to expired token).
 
 This Ticket Viewer will:
@@ -61,12 +62,16 @@ This Ticket Viewer will:
 
 ## Interface
 
+Main display: display all tickets with pagination
 ![Main display](/images/main_display.png)
 
+Pop-up window: display details for a single ticket
 ![Pop-up ticket details](/images/pop-up_details.png)
 
+Loading: appear while waiting for a response from Zendesk API
 ![Loading dots](/images/loading_dots.png)
 
+Error page: appear when there is an Internet interruption or any server error
 ![Error page](/images/error_display.png)
 
 
